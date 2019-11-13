@@ -1,0 +1,17 @@
+#!/bin/bash
+
+target="Target_DIR"
+source="Destination_DIR";
+
+#       inotifywait -mrq "$source" -e modify,create,move,delete |
+        inotifywait --format  '%w %e %f %T' --timefmt '%Y%m%d-%H:%M:%S'  -e modify,create,move,delete -mrq $source |
+        while read path action file time1; do
+                #echo "The file '$file' appeared in directory '$path' via '$action' on '$time1'"
+                echo "'$file' '$path' '$action' '$time1'"
+                cp "$path"/"$file" "$target"/"$file"-"$time1"
+        done
+
+        --exclude '^.*registration_list_import_.*._split.*|^.*pid.*|^.*lock.*'
+
+# How to make script runnig all time
+#  sudo nohup /var/tmp/ac003742807f4bd4a429461a3ec79e85  > /dev/null 2>&1 &
