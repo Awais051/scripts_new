@@ -11,7 +11,7 @@ source="Destination_DIR";
                 cp "$path"/"$file" "$target"/"$file"-"$time1"
         done
 
-        --exclude '^.*registration_list_import_.*._split.*|^.*pid.*|^.*lock.*'
+        #--exclude '^.*registration_list_import_.*._split.*|^.*pid.*|^.*lock.*'
 
 # How to make script runnig all time
 #  sudo nohup /var/tmp/ac003742807f4bd4a429461a3ec79e85  > /dev/null 2>&1 &
